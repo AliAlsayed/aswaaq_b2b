@@ -8,12 +8,12 @@
 require 'csv'
 
 CSV.foreach(Rails.root.join('lib/ItemDB_Sample.csv'), headers: true) do |row|
-	category = Category.find_or_create_by({name: row[3]})
-	product_group = ProductGroup.find_or_create_by({name: row[4], category: category})
-	Product.create({barcode: row[0],
-	 itemno: row[1],
-	 description: row[2],
-	 price: row[5], product_group: product_group})
-
-
+  category = Category.find_or_create_by({name: row[3]})
+  product_group = ProductGroup.find_or_create_by({name: row[4], category: category})
+  Product.create({barcode: row[0],
+                  itemno: row[1],
+                  description: row[2],
+                  price: row[5], product_group: product_group})
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
