@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-  belongs_to :product_group
+	belongs_to :product_group
 end
