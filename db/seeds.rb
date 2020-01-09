@@ -13,7 +13,7 @@ CSV.foreach(Rails.root.join('lib/ItemDB_Sample.csv'), headers: true) do |row|
   Product.create(barcode: row[0],
                   itemno: row[1],
                   description: row[2],
-                  price: row[5], product_group: product_group)
+                  price_cents: row[5], product_group: product_group)
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
