@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-3">
+      <h4 class="text-center">Categories</h4>
+      <nav class="nav nav-pills flex-column pl-4">
+        <a class="nav-item nav-link active" data-toggle="tab" href="#category-1" href="#">Category A</a>
+        <a class="nav-item nav-link" data-toggle="tab" href="#category-2" href="#">Category B</a>
+        <a class="nav-item nav-link"  data-toggle="tab" href="#category-3" href="#">Category C</a>
+      </nav>
+    </div>
+
+    <div class="col-9">
+      <h4>Product Groups</h4>
+      <!-- The idea here is to use text-primary class for selected group and text-secondary for all others" -->
+      <a href="#" class="text-primary">ALL PRODUCTS</a>
+      <br />
+      <% ["WATER", "ENERGY, VITAMIN& SPORT DRINKS", "SYRUPS & ROSE WATER", "NON CARBONATED DRINKS", "BEVERAGE PROMOTION"].each do |pg| %>
+        <a href="#" class="text-secondary"><%= pg %></a>
+        <br />
+      <% end %>
+    </div>
+  </div>
+</div>
