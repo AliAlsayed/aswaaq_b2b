@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   resources :products
-  resources :product_groups
-  resources :categories
   root 'products#index'
+
+  resources :categories do
+    resources :product_groups 
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
