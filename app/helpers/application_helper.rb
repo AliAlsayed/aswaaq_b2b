@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   # def list_categories
   #   categories = Category.all
   #   categories.each do |category|
@@ -7,7 +7,7 @@ module ApplicationHelper
   #   end
   # end
 
-  def format_product_group(product_group)
+  def product_group_breadcrumb_li(product_group)
     if product_group
       content_tag(:li, product_group.name, class: "breadcrumb-item active", "aria-current": "page")
     else

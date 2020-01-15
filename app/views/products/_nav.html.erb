@@ -5,11 +5,8 @@
       <nav class="nav nav-pills flex-column pl-4">
         
         <% Category.all.each do |category| %>
-          <% if  category == @category %>
-            <%= link_to category.name, category, class: "nav-item nav-link active" %>
-          <% else %>
-            <%= link_to category.name, category, class: "nav-item nav-link" %>
-          <% end %>
+          <% active_class = category == @category ? "active" : "" %>
+          <%= link_to category.name, category, class: "nav-item nav-link #{active_class}" %>
         <% end %>
 
       </nav>
@@ -20,14 +17,11 @@
       <!-- The idea here is to use text-primary class for selected group and text-secondary for all others" -->
       <% @product_groups.each do |pg| %>
         <!-- check if @product_category varialble exists(we are in product_group show page)-->
-        <% if @product_group && pg == @product_group %>
-          <%= link_to pg.name, category_product_group_path(pg.category, pg), class: "text-primary" %>
-        <% else %>
-          <%= link_to pg.name, category_product_group_path(pg.category, pg), class: "text-secondary" %>
-        <% end %>
-
+        <% text_class = @product_group && pg == @product_group ? "text-primary" :  "text-secondary" %>
+        <%= link_to pg.name, category_product_group_path(pg.category, pg), class: text_class %>
         <br />
       <% end %>
+      
     </div>
   </div>
 </div>
