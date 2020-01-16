@@ -1,0 +1,148 @@
+.shopping-cart {
+  .table {
+    border: .5px solid lightgray !important;
+  }
+
+  th {
+    border: 0 !important
+  }
+
+  table#cart {
+    width:100%;
+    border-collapse:collapse;
+  }
+
+  td {
+    vertical-align: middle !important;
+  }
+
+  table#cart th,
+  table#cart td {
+    padding:.5em;
+  }
+
+  th {
+    font-weight: 400;
+  }
+
+  #header-remove, #header-img {
+    text-align: center !important;
+  }
+
+  table#cart tfoot {
+    background:#eee;
+  }
+
+  input {font:inherit;}
+
+  .btn {
+    display:inline-block;
+    padding: 6px 12px;
+    font-size:inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius:4px;
+  }
+  .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+  .cta,
+  h2 {text-align:center;}
+
+  .image{
+    background-color: #CCC;
+    width: 100%;
+    height: 100px;
+  }
+
+  #td-checkbox {
+    width: 5%;
+  }
+
+  #header-total {
+    font-weight: bold;
+  }
+
+  #td-price, #td-qty {
+    width: 10%;
+  }
+
+  .div-total {
+    display: flex;
+    flex-flow: row;
+  }
+
+  .total-val, #sum-total-val {
+    margin-right: 5px;
+  }
+
+  #td-img {
+    width: 15%;
+  }
+
+  #td-total span {
+    font-weight: bold;
+  }
+
+  .qty-inp {
+    width: 70%;
+    text-align: center;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+  }
+
+  #td-checkbox, #td-img {
+    vertical-align: middle !important;
+    text-align: center;
+  }
+
+  #product-name {
+    font-weight: bold;
+    width: 50%;
+  }
+
+  #td-sum-total {
+    font-weight: bold;
+
+  }
+
+  #td-sum-total-val span {
+    font-weight: bold;
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+
+  .button {
+
+
+    padding: 12px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+  }
+
+  .button-img {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+  }
+
+  .update-button-img {
+    background-color: yellow;
+  }
+
+  .continue-button-img {
+    background-color: orange;
+  }
+}
