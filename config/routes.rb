@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :product_groups 
   end
 
+  post '/cart' => 'application#add_to_cart'
   get '/cart' => 'cart#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
