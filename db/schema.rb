@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_071328) do
+ActiveRecord::Schema.define(version: 2020_01_21_093513) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -44,6 +44,24 @@ ActiveRecord::Schema.define(version: 2020_01_09_071328) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "price_cents"
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "product_groups", force: :cascade do |t|
     t.string "name"
     t.integer "category_id", null: false
@@ -75,6 +93,9 @@ ActiveRecord::Schema.define(version: 2020_01_09_071328) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_groups", "categories"
   add_foreign_key "products", "product_groups"
 end

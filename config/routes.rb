@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     resources :product_groups 
   end
 
-  post '/cart' => 'application#add_to_cart'
+  post '/cart' => 'cart#add_to_cart'
   get '/cart' => 'cart#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
