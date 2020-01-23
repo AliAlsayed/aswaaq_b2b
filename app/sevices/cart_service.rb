@@ -1,9 +1,9 @@
 class CartService
   attr_reader :data
 
-  def initialize(data = {})
+  def initialize(data)
     # Stores data in format of {:product_id => quantity}
-    @data = data
+    @data = data || {}
   end
 
   def add(product, quantity = 1)

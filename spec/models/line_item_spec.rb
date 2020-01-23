@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe LineItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:product) { create :product, price_cents: 50_00 }
+  it "calcutes the price" do
+    line_item = create :line_item, product: product, quantity: 10
+
+    expect(line_item.price_cents).to eq(500_00)
+  end
 end
