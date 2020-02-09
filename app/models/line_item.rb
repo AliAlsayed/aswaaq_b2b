@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LineItem < ApplicationRecord
   belongs_to :order
   belongs_to :product
@@ -8,6 +10,6 @@ class LineItem < ApplicationRecord
   private
 
   def set_price
-    self.price = self.product.price * self.quantity
+    self.price = product.price * quantity
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CartService
   attr_reader :data
 
@@ -8,7 +10,7 @@ class CartService
 
   def add(product, quantity = 1)
     @data[get_id product] ||= 0
-    @data[get_id product] += quantity
+    @data[get_id product] += quantity.to_i
   end
 
   def update(product, quantity)
@@ -30,6 +32,6 @@ class CartService
   protected
 
   def get_id(k)
-    k.kind_of?(Product) ? k.id.to_s : k.to_s
+    k.is_a?(Product) ? k.id.to_s : k.to_s
   end
 end

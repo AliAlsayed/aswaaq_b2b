@@ -1,87 +1,79 @@
 <h1>Cart</h1>
 
+
 <div class="shopping-cart">
-  <table class="table">
-    <thead>
-      <tr>
-        <th id="header-remove">Remove</th>
-        <th id="header-img">Image</th>
-        <th>Product(s)</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th id="header-total">TOTAL</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td id="td-checkbox">
-          <input type="checkbox">
-        </td>
 
-        <td id="td-img">
-          <div class="image"></div>
-        </td>
+  <%= form_tag cart_path, method: :patch do %>
 
-        <td id="product-name">
-          <label>
-            123
-          </label>
-        </td>
+    <table class="table">
 
-        <td id="td-price">
-          <span class="price">12.23</span> AED
-        </td>
+      <thead>
+        <tr>
+          <th id="header-remove">Remove</th>
+          <th id="header-img">Image</th>
+          <th>Product(s)</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th id="header-total">TOTAL</th>
+        </tr>
+      </thead>
 
-        <td id="td-qty">
-          <input type="number" class="qty-inp" value="2">
-        </td>
-        <td id="td-total">
-          <div class="div-total"><span class="total-val">1</span><span> AED</span> </div>
-        </td>
-      </tr>
+      <tbody>
 
-      <tr>
-        <td id="td-checkbox">
-          <input type="checkbox">
-        </td>
+        <% @products.each do |product| %> 
 
-        <td id="td-img">
-          <div class="image"></div>
-        </td>
+          <%= hidden_field_tag "product_ids[]", product.id %>
+          <tr>
+            <td id="td-checkbox">
+              <%= check_box_tag "checked_product_ids[]", product.id %>
+            </td>
 
-        <td id="product-name">
-          <label>
-            1234
-          </label>
-        </td>
+            <td id="td-img">
+              <div class="image"></div>
+            </td>
 
-        <td id="td-price">
-          <span class="price">52.23</span> AED
-        </td>
+            <td id="product-name">
+              <label>
+                 <%= product.description %>
+              </label>
+            </td>
 
-        <td id="td-qty">
-          <input type="number" class="qty-inp form-control" value="1">
-        </td>
-        <td id="td-total">
-          <div class="div-total"><span class="total-val">1</span><span> AED</span> </div>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td id="td-sum-total">
-          TOTAL OF:
-        </td>
-        <td id="td-sum-total-val">
-          <div class="div-total"><span id="sum-total-val">0</span> <span>AED</span> </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="buttons">
-    <button type="button" class="btn btn-secondary">Update Shopping Cart</button>
-    <button type="button" class="btn btn-primary float-right">Create Order</button>
-  </div>
+            <td id="td-price">
+              <span class="price"><%= product.price_cents %></span> AED
+            </td>
+
+            <td id="td-qty">
+            
+              <%= number_field_tag "product_quantities[]", session[:cart][product.id.to_s], class: "qty-inp" %>
+            </td>
+            <td id="td-total">
+              <div class="div-total">
+                <span class="total-val"><%= product.price_cents * session[:cart][product.id.to_s] %></span><span> AED</span>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td id="td-sum-total">
+            TOTAL OF:
+          </td>
+          <td id="td-sum-total-val">
+            <div class="div-total">
+              <span id="sum-total-val"><%= @total %></span> <span>AED</span>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div class="buttons">
+      <%= submit_tag "Update Shopping Cart", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+  <%= button_to "Create Order", orders_path, class:"btn btn-primary float-right" %>
 </div>

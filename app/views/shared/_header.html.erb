@@ -18,6 +18,9 @@
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
+      <% if current_user %>
+        <%= link_to "#{total_items_in_cart} items", cart_path, class: "nav-link" %>
+      <% end %>
     </ul>
   </div>
 </nav>
